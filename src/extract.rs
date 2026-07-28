@@ -216,6 +216,7 @@ fn extract_world_data(
             Option<&CombinedLightmaps>,
         )>,
     >,
+    render_camera: Query<Has<ExtractedCombinedLightmaps>>,
 ) {
     for (entity, transform, _, combined_lightmaps) in &camera {
         commands.entity(entity.id()).insert(ExtractedWorldData {
@@ -239,6 +240,10 @@ fn extract_world_data(
             commands
                 .entity(entity.id())
                 .insert(ExtractedCombinedLightmaps(extracted_collection));
+        } else if render_camera.get(entity.id()).is_ok_and(|x| x) {
+            commands
+                .entity(entity.id())
+                .remove::<ExtractedCombinedLightmaps>();
         }
     }
 }
