@@ -199,7 +199,7 @@ pub struct NormalMap {
 /// Describes the sprite object's 2d height, useful for emulating 3d lighting in top-down 2d games.
 ///
 /// This is currently used along with the normal maps. It defaults to 0.   
-#[derive(Component, Default, Reflect)]
+#[derive(Component, Default, Clone, Copy, Reflect)]
 pub struct SpriteHeight(pub f32);
 
 impl NormalMap {

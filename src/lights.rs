@@ -126,7 +126,7 @@ impl Default for PointLight2d {
 /// This is currently used along with the normal maps.
 ///
 /// **Default:** 0.   
-#[derive(Component, Default, Reflect)]
+#[derive(Component, Default, Clone, Copy, Reflect)]
 pub struct LightHeight(pub f32);
 
 #[derive(Debug, Clone, Copy, Reflect)]
